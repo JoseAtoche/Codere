@@ -27,8 +27,8 @@ namespace APICodere.Controllers
 
         }
 
-        [HttpGet("ShowsMainInformation")]
-        public async Task<IActionResult> GetShowsMainInformation()
+        [HttpGet("ShowsMainInformationAndImport")]
+        public async Task<IActionResult> GetShowsMainInformationAndImport()
         {
 
             try
@@ -100,6 +100,25 @@ namespace APICodere.Controllers
 
             return Ok(allData);
 
+        }
+
+        [HttpGet("GetDataByQuery")]
+        public IActionResult GetDataByQuery([FromBody] string sqlQuery)
+        {
+            try
+            {   
+                if (_dbContext.Shows.Count() == 0) {
+
+                    return BadRequest(new { error = "La base de datos no tiene Datos, por favor, ejecute antes el metodo de importación: ShowsMainInformationAndImport" });
+                }
+                // Ejecutar la consulta en la base de datos
+                var result = _dbContext.Shows.FromSqlRaw(sqlQuery).ToList();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = $"Error executing query: {ex.Message}" });
+            }
         }
 
 

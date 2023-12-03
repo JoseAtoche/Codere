@@ -28,6 +28,7 @@ namespace APICodere.Models.Dtos
 
         [NotMapped] 
         public NetworkDto Network { get; set; }
+
         public int? idNetwork { get; set; }
         public string WebChannel { get; set; }
         public string DvdCountry { get; set; }
@@ -35,15 +36,15 @@ namespace APICodere.Models.Dtos
 
         public ExternalsDto Externals { get; set; }
         public int? idExternals { get; set; }
-        [NotMapped]
 
+        [NotMapped]
         public ImageDto Image { get; set; }
         public int? idImage { get; set; }
 
         public string Summary { get; set; }
         public int Updated { get; set; }
-        [NotMapped]
 
+        [NotMapped]
         public LinkDto Link { get; set; }
         public int? idLink { get; set; }
         public override bool Equals(object obj)
@@ -138,7 +139,6 @@ namespace APICodere.Models.Dtos
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
         public string SelfHref { get; set; }
         public string PreviousepisodeHref { get; set; }
     }

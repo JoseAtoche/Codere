@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\APICodere.csproj": {}
+    "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\APICodere.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\APICodere.csproj": {
+    "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\APICodere.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\APICodere.csproj",
+        "projectUniqueName": "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\APICodere.csproj",
         "projectName": "APICodere",
-        "projectPath": "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\APICodere.csproj",
+        "projectPath": "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\APICodere.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\obj\\",
+        "outputPath": "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,6 +57,10 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.0, )"
             },

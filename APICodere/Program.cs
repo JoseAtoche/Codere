@@ -21,15 +21,12 @@ using (var scope = app.Services.CreateScope())
 
     try
     {
-
-
         var context = services.GetRequiredService<ShowsRepository>();
         context.Database.EnsureCreated();
     }
     catch (Exception ex)
     {
         Console.WriteLine("Error al aplicar migraciones: " + ex.Message);
-        // Puedes manejar el error de la manera que prefieras.
     }
 }
 

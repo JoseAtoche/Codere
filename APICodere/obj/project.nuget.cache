@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xI6k1yVgjQHLAgVe2/Vv5U8sdssuPb4G907dmdsCBRhIGk5qYYs1UXupUUK3x72IfTRseAauN+uLxKc7FZiNqw==",
+  "dgSpecHash": "5aCf2/lxug57tBAcRuQkUcjm1Qp6/x5wg6DVvZG4wf6AoiF1R+mOFuIe0KIuFOUBrXi+UaNUsoxeAaS+amjzfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\usuario\\source\\repos\\APICodere\\APICodere\\APICodere.csproj",
+  "projectFilePath": "D:\\Documentos\\MelonDsOrigin\\melonDS\\Codere\\APICodere\\APICodere.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -13,6 +13,7 @@
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\8.0.0\\microsoft.entityframeworkcore.inmemory.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\8.0.0\\microsoft.entityframeworkcore.sqlite.core.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

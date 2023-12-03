@@ -49,7 +49,6 @@ namespace APICodere.Repository
                 .WithOne()
                 .HasForeignKey<ShowDto>(s => s.idLink);
 
-            // Mapeos para NetworkDto
             modelBuilder.Entity<NetworkDto>()
                 .HasOne(n => n.Country)
                 .WithMany()
@@ -78,7 +77,6 @@ namespace APICodere.Repository
             catch (Exception ex)
             {
                 Console.WriteLine("Error al aplicar migraciones: " + ex.Message);
-                // Puedes manejar el error de la manera que prefieras.
             }
         }
 

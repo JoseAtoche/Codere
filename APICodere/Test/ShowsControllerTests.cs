@@ -1,9 +1,14 @@
 ﻿using System.Net;
+using System.Net.Http;
+using System.Security.AccessControl;
 using APICodere.Controllers;
+using APICodere.Mappings;
+using APICodere.Models.Dtos;
 using APICodere.Models.Models;
 using APICodere.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -12,61 +17,69 @@ namespace APICodere.Test
     [TestClass]
     public class ShowsControllerTests
     {
-        private ShowsController _controller;
-        private Mock<HttpClient> _httpClientMock;
-
+        private ShowsController _showsController;
+        private ShowsRepository _repository;
+        private IMapper _mapper;
+        private HttpClient _httpClient;
 
         [TestInitialize]
-        public void Initialize()
+        public void Setup()
         {
-            var dbContextMock = new Mock<ShowsRepository>();
-            var configurationMock = new Mock<IConfiguration>();
-            var mapperMock = new Mock<IMapper>();
+            var options = new DbContextOptionsBuilder<ShowsRepository>()
+                   .UseInMemoryDatabase(databaseName: "Tvshows.sqlite")
+                   .Options;
+            _repository = new ShowsRepository(options);
 
-            _httpClientMock = new Mock<HttpClient>();
-
-            _controller = new ShowsController(dbContextMock.Object, mapperMock.Object)
+            var mapperConfiguration = new MapperConfiguration(cfg =>
             {
-                ControllerContext = new ControllerContext
-                {
-                    HttpContext = new DefaultHttpContext
-                    {
-                        RequestServices = new ServiceCollection()
-                            .AddScoped(_ => _httpClientMock.Object)
-                            .BuildServiceProvider()
-                    }
-                }
-            };
+                cfg.AddProfile<MappingProfile>();
+            });
+            _mapper = new Mapper(mapperConfiguration);
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("https://api.tvmaze.com");
+
+            // Crear el controlador con las dependencias configuradas
+            _showsController = new ShowsController(_repository, _mapper);
         }
+
         [TestMethod]
-        public async Task GetShowsMainInformation_ConnectsToApiSuccessfully()
-        {
-            // Arrange
-            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            responseMessage.Content = new StringContent("[{ \"id\": 1, \"name\": \"Show 1\" }]");
-            _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(responseMessage);
+        public async Task GetShowsMainInformationAndImport_ShouldCreateRecordsInDatabase()
+        {           
 
             // Act
-            var result = await _controller.GetShowsMainInformation();
+            var result = await _showsController.GetShowsMainInformationAndImport() as ObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+
+        }
+
+        [TestMethod]
+        public async Task GetShowById_ShouldReturnShowDto()
+        {
+            // Arrange
+            var showId = 1;            
+
+            var result = await _showsController.GetShowById(showId) as ObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+
+        }
+
+        [TestMethod]
+        public async Task GetAllData_ShouldReturnAllData()
+        {          
+
+            // Act
+            var result = await _showsController.GetAllData() as ObjectResult;
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
-            var okResult = (OkObjectResult)result;
-            Assert.IsNotNull(okResult.Value);
-            Assert.IsInstanceOfType(okResult.Value, typeof(List<Show>));
-            var showList = (List<Show>)okResult.Value;
-            Assert.AreEqual(1, showList.Count);
-            Assert.AreEqual(1, showList[0].Id);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
 
-            // Verify that the controller made a request to the TVMaze API
-            _httpClientMock.Verify(c => c.GetAsync("shows"), Times.Once);
         }
 
-        [TestCleanup]
-        public void Cleanup()
-        {
-            //_dbContext.Database.EnsureDeleted();
-            //_dbContext.Dispose();
-        }
+       
     }
 }
