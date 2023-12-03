@@ -1,59 +1,58 @@
-He desarrollado esta aplicación de una forma no muy compleja, permitiendo lo máximo posible poder expandir sin demasiados cambios,
+## Descripción
 
-He creado un objeto dto que sería el que insertamos en la BBDD, y luego otro objeto que es el que importo de la API, esto lo he hecho así por si, imaginariamente, el modelo de la API que consumimos cambiase de un día para otro que la BBDD no se viese modificada ni tuviese que hacerse una modificación forzosa a contrarreloj, simplemente deberíamos hacer algún cambio al modelo y no mapear esos nuevos datos de ser necesario. Cuando estuviese lista y preparada la BBDD sería cuando se modificaría el DTO.
+He desarrollado esta aplicación con el objetivo de mantener la simplicidad y la flexibilidad para futuras expansiones sin realizar cambios significativos.
 
-En este caso la Aplicación la he desarrollado usando SQLite, la razon es sencilla, mayor facilidad(en este caso) para enviaros la BBDD, y además eran pocos datos.
-Si hubiese desarrollado esta aplicación de forma más profesional, sin lugar a dudas lo hubiese desarrollado con SQLServer, creo que sería lo más óptimo, así podría ponerse en servidores externos, etc, pero repito, para este caso lo más sencillo me parecía esto, sobre todo para la hora de entregar el trabajo.
+### Estructura del Proyecto
 
-Lo que más he dudado ha sido a la hora de implementar la “api key” ya que al principio pensé incluso en desarrollar un sistema de Tokens(JwtBearer), para que el usuario tuviese que llamar a una api para obtener el token y luego poder realizar las llamadas pertinentes a la API.
-Pero en este caso, ya que así lo describía el requisito me decanté por usar efectivamente un API Key, creo que en el caso de querer una aplicación más segura debería implementarse un sistema de Tokens
+He creado dos objetos clave:
 
-He pensado que para este caso en el middleware de seguridad podíamos poner las rutas que son públicas en una lista para así tenerlo más localizado.
+1. **DTO (Data Transfer Object):** Representa los datos que se insertan en la base de datos.
+2. **Objeto de Importación desde la API:** Utilizado para importar datos desde la API.
 
-En el caso de haberlo hecho con Bearer hubiese sido tan sencillo como hacer un método con la cabecera “ [AllowAnonymous] ” para que permitiese sin problemas al usuario llamar a dichos métodos.
+Esta estructura permite una separación clara entre la API y la base de datos, facilitando adaptaciones futuras si el modelo de la API cambia.
 
-Me he tomado también la libertad de crear un pequeño método que me permite, desde una llamada API, lanzar una Query, creo que es algo interesante en este caso.
+### Base de Datos
 
-Según lo que he entendido en el Requerimiento 2, parece que el método del requerimiento 1 debe lanzarse solo cuando se invoca al método, por ello así lo he hecho.
+La aplicación utiliza SQLite debido a su simplicidad y facilidad para compartir la base de datos. En un entorno más profesional, se consideraría el uso de SQL Server para mayor escalabilidad.
 
-También he comprobado a la hora de importar que los objetos que vienen de la API no estén en la BBDD, para no duplicar información y también compruebo si están modificados (por si los datos que envía la API cambia, que llegue a importar y modificar los cambios).
+### Seguridad
 
-A las clases internas del objeto Show le he creado unos IDs autoincrementales, para así agilizar el proceso de búsqueda si llegase a haber demasiados datos.
+En lugar de implementar inicialmente un sistema de tokens (JwtBearer), opté por una solución más simple utilizando API Key. Para mejorar la seguridad, se recomendaría un sistema de tokens en un entorno más robusto.
+He de añadir que el API Key es expresamente lo que se pide en el Requisito 2
 
+### Middleware de Seguridad
 
+Las rutas públicas se gestionan en el middleware de seguridad para una fácil identificación y control. Dentro de Program.cs y "publicPaths"
 
---------------------------------
+### Importación de Datos
 
+Implementé un método que permite lanzar una consulta desde una llamada API. Además, al importar datos, se verifica la existencia y la modificación de objetos para evitar duplicaciones y mantener la integridad.
+No he hecho una importación automática al iniciar la aplicación porque según lo que entendí en los Reequerimientos se quería solo cuando se llamase al metodo API concreto.
 
-Como ejecutar la aplicacion
+### IDs Autoincrementales
 
+Se añadieron IDs autoincrementales a las clases internas del objeto `Show` para agilizar la búsqueda en caso de una gran cantidad de datos.
 
-----------------------------
+## Ejecución de la Aplicación
 
-Simplemente descargue el código, y con Visual Studio abralo y ejecútelo, La versión de VS que he usado en mi caso es VS 2022 (por si hubiese algun problema)
+1. Descargue el código y ábralo en Visual Studio (Versión utilizada: VS 2022).
+2. Ejecute la aplicación.
 
-En el caso de que la BBDD Sqlite no exista no habría problema, se crea de forma automática cuando la aplicación se ejecuta.
+### BBDD SQLite
 
-Para poder lanzar comandos es tan simple como abrir un programa como Postman y llamar a la siguiente ruta para importar los datos:
+La base de datos SQLite se crea automáticamente al ejecutar la aplicación.
 
-En Headers es importante especificar lo siguiente:
-ApiKey - DevelopKey
-Content-Type - application/json
+## Comandos de API
 
-https://localhost:44360/api/Shows/ShowsMainInformationAndImport
+| Descripción                       | URL                                              |
+| ----------------------------------| --------------------------------------------------|
+| Importar Datos Principales         | `https://localhost:44360/api/Shows/ShowsMainInformationAndImport` |
+| Visualizar Detalles de un Show     | `https://localhost:44360/api/Shows/show/{id}`                     |
+| Mostrar Todos los Datos (Método Público) | `https://localhost:44360/api/Shows/showAllData`              |
+| Obtener Datos por Consulta         | `https://localhost:44360/api/Shows/GetDataByQuery`               |
 
-https://localhost:44360/api/Shows/show/{id} (siendo el número del Show a visualizar)
-https://localhost:44360/api/Shows/showAllData (método público, no necesita el Header ApiKey)
-https://localhost:44360/api/Shows/GetDataByQuery
-Este método necesita en el Body algo como esto:
-"select  show.* from 'Show' where id= 1"
+### Encabezados Importantes
 
-
-
-
-
-
-
-
-
+- `ApiKey - DevelopKey`
+- `Content-Type - application/json`
 
