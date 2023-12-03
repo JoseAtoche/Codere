@@ -19,3 +19,41 @@ Según lo que he entendido en el Requerimiento 2, parece que el método del requ
 También he comprobado a la hora de importar que los objetos que vienen de la API no estén en la BBDD, para no duplicar información y también compruebo si están modificados (por si los datos que envía la API cambia, que llegue a importar y modificar los cambios).
 
 A las clases internas del objeto Show le he creado unos IDs autoincrementales, para así agilizar el proceso de búsqueda si llegase a haber demasiados datos.
+
+
+
+--------------------------------
+
+
+Como ejecutar la aplicacion
+
+
+----------------------------
+
+Simplemente descargue el código, y con Visual Studio abralo y ejecútelo, La versión de VS que he usado en mi caso es VS 2022 (por si hubiese algun problema)
+
+En el caso de que la BBDD Sqlite no exista no habría problema, se crea de forma automática cuando la aplicación se ejecuta.
+
+Para poder lanzar comandos es tan simple como abrir un programa como Postman y llamar a la siguiente ruta para importar los datos:
+
+En Headers es importante especificar lo siguiente:
+ApiKey - DevelopKey
+Content-Type - application/json
+
+https://localhost:44360/api/Shows/ShowsMainInformationAndImport
+
+https://localhost:44360/api/Shows/show/{id} (siendo el número del Show a visualizar)
+https://localhost:44360/api/Shows/showAllData (método público, no necesita el Header ApiKey)
+https://localhost:44360/api/Shows/GetDataByQuery
+Este método necesita en el Body algo como esto:
+"select  show.* from 'Show' where id= 1"
+
+
+
+
+
+
+
+
+
+
