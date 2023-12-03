@@ -6,6 +6,7 @@ using APICodere.Mappings;
 using APICodere.Models.Dtos;
 using APICodere.Models.Models;
 using APICodere.Repository;
+using APICodere.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,9 +38,10 @@ namespace APICodere.Test
             _mapper = new Mapper(mapperConfiguration);
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://api.tvmaze.com");
+            ShowsService showsService = new ShowsService(_repository, _mapper);
 
             // Crear el controlador con las dependencias configuradas
-            _showsController = new ShowsController(_repository, _mapper);
+            _showsController = new ShowsController(showsService);
         }
 
         [TestMethod]

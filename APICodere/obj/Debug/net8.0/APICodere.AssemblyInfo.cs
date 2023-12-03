@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APICodere")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d2dccf8b693455e78f5e89ca8b8082829dd0df7")]
 [assembly: System.Reflection.AssemblyProductAttribute("APICodere")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APICodere")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

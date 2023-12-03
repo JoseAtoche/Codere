@@ -1,10 +1,14 @@
 using APICodere.Repository;
+using APICodere.Services;  // Importa la capa de servicio
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuración de AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<ShowsRepository>(ServiceLifetime.Scoped);
+
+// Agregar el servicio de la capa de servicio
+builder.Services.AddScoped<ShowsService>();
 
 builder.Services.AddControllers();
 
@@ -14,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-//Inicializa la base de datos
+// Inicializa la base de datos
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -43,7 +47,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
-//Rutas públicas
+// Rutas públicas
 var publicPaths = new List<string>
 {
     "/api/Shows/showAllData"
@@ -52,6 +56,8 @@ var publicPaths = new List<string>
 // Middleware de seguridad (Validación de la clave de API)
 app.Use((context, next) =>
 {
+    var showsService = context.RequestServices.GetRequiredService<ShowsService>();
+
     if (publicPaths.Contains(context.Request.Path))
     {
         return next();
@@ -65,6 +71,16 @@ app.Use((context, next) =>
         context.Response.StatusCode = 401; // Unauthorized
         return context.Response.WriteAsync("INVALID API key");
     }
+
+    return next();
+});
+
+// Middleware para manejar las operaciones de la capa de servicio
+app.Use((context, next) =>
+{
+    var showsService = context.RequestServices.GetRequiredService<ShowsService>();
+
+    //Aquí podemos insertar algun Middleware de la capa de servicio
 
     return next();
 });
