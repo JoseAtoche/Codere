@@ -47,7 +47,7 @@ La base de datos SQLite se crea automáticamente al ejecutar la aplicación.
 | Descripción                       | URL                                              |
 | ----------------------------------| --------------------------------------------------|
 | Importar Datos Principales         | `https://localhost:44360/api/Shows/ShowsMainInformationAndImport` |
-| Visualizar Detalles de un Show     | `https://localhost:44360/api/Shows/show/{id}`                     |
+| Visualizar Detalles de un Show por ID      | `https://localhost:44360/api/Shows/show/{id}`                     |
 | Mostrar Todos los Datos (Método Público) | `https://localhost:44360/api/Shows/showAllData`              |
 | Obtener Datos por Consulta         | `https://localhost:44360/api/Shows/GetDataByQuery`               |
 
