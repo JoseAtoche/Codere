@@ -1,0 +1,6 @@
+@APICodere_HostAddress = http://localhost:5109
+
+GET {{APICodere_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
