@@ -51,6 +51,8 @@ He tenido tambien en cuenta los datos duplicados, tanto de Networks como de Coun
 
 Se han añadido IDs autoincrementales a las clases internas del objeto `Show` para agilizar la búsqueda en caso de una gran cantidad de datos.
 
+El objeto Countries, aunque es de esperar que el valor "Code" sea siempre diferente, por dar consistencia a la BBDD le añadí un ID, para que así todos los elementos compartan el mismo tipo de Key numérica, ademas de asegurar que no vengan Countries con "code" iguales per oalgun otro parámetro diferente.
+
 
 ### BBDD SQLite
 
@@ -130,6 +132,8 @@ Public routes are managed in the security middleware for easy identification and
 
 A method has been implemented that allows to launch a query from an API call. In addition, when importing data, objects are checked for existence and modification to avoid duplication and maintain integrity. An automatic import is not performed when starting the application because, according to what I understood in the Requirements, it was wanted only when the particular API method was called.
 I have also taken into account duplicate data, both from Networks and Countries, in order not to insert duplicate data in the DB, if the data changes, if it is imported again it would be modified/added again.
+
+The Countries object, although it is to be expected that the "Code" value is always different, to give consistency to the DB I added an ID, so that all the elements share the same type of numerical Key, besides assuring that Countries do not come with the same "code" or any other different parameter.
 
 ### Auto-incremental IDs
 
