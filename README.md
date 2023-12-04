@@ -2,6 +2,10 @@
 
 Esta aplicación ha sido desarrollada con el objetivo de mantener la simplicidad y la flexibilidad para futuras expansiones sin realizar cambios significativos.
 
+## Evolución de la aplicación
+
+Pueden leer la descripción de los Commits, ya que en cada uno voy indicando los pequeños evolutivos que he realizado y que se ha modificado en cada caso.
+
 ## Ejecución de la Aplicación
 
 Antes de abrir la aplicación recomiendo tener Visual Studio 2022 y .NET 8.0 instalados, ya que son las versiones concretas que he usado para desarrollar la aplicación.
