@@ -318,3 +318,11 @@ D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\obj\Debug\net8.0\APICodere.
 D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\obj\Debug\net8.0\APICodere.genruntimeconfig.cache
 D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\obj\Debug\net8.0\ref\APICodere.dll
 D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\NUnit3.TestAdapter.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\NUnit3.TestAdapter.pdb
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\nunit.engine.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\nunit.engine.api.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\nunit.engine.core.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\testcentric.engine.metadata.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\nunit.framework.dll
+D:\Documentos\MelonDsOrigin\melonDS\Codere\APICodere\bin\Debug\net8.0\nunit.framework.legacy.dll

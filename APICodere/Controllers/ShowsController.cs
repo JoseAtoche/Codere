@@ -1,11 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using APICodere.Repository;
-using System.Text.Json;
-using APICodere.Models.Models;
-using APICodere.Models.Dtos;
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 using APICodere.Services;
 
 namespace APICodere.Controllers
@@ -40,14 +34,14 @@ namespace APICodere.Controllers
             }
         }
 
-        [HttpGet("show/{id}")]
+        [HttpGet("Show/{id}")]
         public async Task<IActionResult> GetShowById(int id)
         {
             var show = await _showsService.GetShowById(id);
             return show != null ? Ok(show) : NotFound();
         }
 
-        [HttpGet("showAllData")]
+        [HttpGet("ShowAllData")]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllData()
         {

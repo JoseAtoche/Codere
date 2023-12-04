@@ -18,12 +18,15 @@ namespace APICodere.Repository
 
         public ShowsRepository(DbContextOptions<ShowsRepository> options) : base(options)
         {
-        } 
+        }
+        public ShowsRepository() 
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //// Verifica la configuración de la entidad CountryDto
+
             modelBuilder.Entity<ShowDto>()
             .HasOne(s => s.Schedule)
             .WithOne()
