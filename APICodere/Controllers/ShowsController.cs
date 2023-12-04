@@ -46,13 +46,19 @@ namespace APICodere.Controllers
         public async Task<IActionResult> GetAllData()
         {
             var allData = await _showsService.GetAllData();
+            if (allData == null) {
+
+                return BadRequest("La base de datos no tiene Datos, por favor, ejecute antes el metodo de importación: ShowsMainInformationAndImport");
+            }
+            
             return Ok(allData);
         }
 
         [HttpGet("GetDataByQuery")]
-        public IActionResult GetDataByQuery([FromBody] string sqlQuery)
+        public async Task<IActionResult> GetDataByQuery([FromBody] string sqlQuery)
         {
-            return _showsService.GetDataByQuery(sqlQuery);
+            var data = await _showsService.GetDataByQuery(sqlQuery);
+            return data ;
         }
     }
 
