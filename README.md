@@ -1,3 +1,4 @@
+## Español
 ## Descripción
 
 Esta aplicación ha sido desarrollada con el objetivo de mantener la simplicidad y la flexibilidad para futuras expansiones sin realizar cambios significativos.
@@ -50,6 +51,8 @@ He tenido tambien en cuenta los datos duplicados, tanto de Networks como de Coun
 
 Se han añadido IDs autoincrementales a las clases internas del objeto `Show` para agilizar la búsqueda en caso de una gran cantidad de datos.
 
+El objeto Countries, aunque es de esperar que el valor "Code" sea siempre diferente, por dar consistencia a la BBDD le añadí un ID, para que así todos los elementos compartan el mismo tipo de Key numérica, ademas de asegurar que no vengan Countries con "code" iguales per oalgun otro parámetro diferente.
+
 
 ### BBDD SQLite
 
@@ -75,4 +78,90 @@ Añada estos encabezados en todos los métodos, el APIKey solo es prescindible e
 
 ```json
 "select show.* from 'Show' where id=1"
+```
 
+
+
+## English
+
+
+## Description
+
+This application has been developed with the goal of maintaining simplicity and flexibility for future expansion without making significant changes.
+
+## Evolution of the application
+
+You can read the description of the Commits, since in each one I am indicating the small evolutions that I have made and what has been modified in each case.
+
+## Application Execution
+
+Before opening the application I recommend to have Visual Studio 2022 and .NET 8.0 installed, since they are the concrete versions that I have used to develop the application.
+
+1. Download the code and open it in Visual Studio (Version used: VS 2022).
+2. Run the application (it is developed in .Net 8.0).
+3. At this point (if it is not already created) you will see the Sqlite DB file being created.
+4. Open Postman and use the API commands written below in the document.
+
+### Project Structure
+
+Two key objects have been created:
+
+1. **DTO (Data Transfer Object):** Represents the data that is inserted into the database.
+2. **Import Object from API:** Used to import data from the API.
+
+This structure allows a clear separation between the API and the database, facilitating future adaptations if the API model changes.
+
+### Service Layer
+
+A service layer (`ShowsService`) has been introduced to act as an intermediary between the controllers and the data access layer (`ShowsRepository`). This layer provides an additional abstraction to perform business specific operations and data import logic.
+It will also serve to be reused in another type of project, such as a Web or HangFire project, for example.
+
+### Database
+
+The application uses SQLite because of its simplicity and ease of sharing the database with you. In a more professional environment, SQL Server would be considered for scalability.
+
+### Security
+
+Instead of initially implementing a token system (JwtBearer), I opted for a simpler solution using API Key. To improve security, a token system in a more robust environment would be recommended. It is important to note that API Key is expressly what is requested in Requirement 2.
+
+### Security Middleware
+
+Public routes are managed in the security middleware for easy identification and control. This is configured in `Program.cs` via the `publicPaths` list.
+
+### Data Import
+
+A method has been implemented that allows to launch a query from an API call. In addition, when importing data, objects are checked for existence and modification to avoid duplication and maintain integrity. An automatic import is not performed when starting the application because, according to what I understood in the Requirements, it was wanted only when the particular API method was called.
+I have also taken into account duplicate data, both from Networks and Countries, in order not to insert duplicate data in the DB, if the data changes, if it is imported again it would be modified/added again.
+
+The Countries object, although it is to be expected that the "Code" value is always different, to give consistency to the DB I added an ID, so that all the elements share the same type of numerical Key, besides assuring that Countries do not come with the same "code" or any other different parameter.
+
+### Auto-incremental IDs
+
+Auto-incremental IDs have been added to the inner classes of the `Show` object to speed up the search in case of a large amount of data.
+
+
+### SQLite database
+
+The SQLite database is automatically created when the application is run (No data is imported at this time).
+
+## API commands
+
+| Description | URL |
+| ----------------------------------| --------------------------------------------------|
+| Import Main Data | `https://localhost:44360/api/Shows/ShowsMainInformationAndImport` |
+| Display Show Details by ID | `https://localhost:44360/api/Shows/show/{id}` |
+| Display All Data (Public Method) | `https://localhost:44360/api/Shows/showAllData` |
+| Retrieve Data by Query | `https://localhost:44360/api/Shows/GetDataByQuery` |
+
+### Important Headings
+
+Add these headers in all methods, the APIKey is only dispensable in the method marked as "Public Method".
+
+- `ApiKey - DevelopKey`
+- `Content-Type - application/json`
+
+### Body required to obtain data by Query:
+
+```json
+"select show.* from 'Show' where id=1"
+```
