@@ -2,6 +2,15 @@
 
 Esta aplicación ha sido desarrollada con el objetivo de mantener la simplicidad y la flexibilidad para futuras expansiones sin realizar cambios significativos.
 
+## Ejecución de la Aplicación
+
+Antes de abrir la aplicación recomiendo tener Visual Studio 2022 y .NET 8.0 instalados, ya que son las versiones concretas que he usado para desarrollar la aplicación.
+
+1. Descargue el código y ábralo en Visual Studio (Versión utilizada: VS 2022).
+2. Ejecute la aplicación. (está desarrollada en .Net 8.0)
+3. En este momento (si no está creada) verá crearse el archivo de BBDD Sqlite.
+4. Abra Postman y use los comandos de API escritos más abajo en el documento.
+
 ### Estructura del Proyecto
 
 Se han creado dos objetos clave:
@@ -18,7 +27,7 @@ Tambien servirá para poder ser reaprovechada en otro tipo de proyecto, como uno
 
 ### Base de Datos
 
-La aplicación utiliza SQLite debido a su simplicidad y facilidad para compartir la base de datos. En un entorno más profesional, se consideraría el uso de SQL Server para mayor escalabilidad.
+La aplicación utiliza SQLite debido a su simplicidad y facilidad para compartir la base de datos con ustedes. En un entorno más profesional, se consideraría el uso de SQL Server para mayor escalabilidad.
 
 ### Seguridad
 
@@ -31,19 +40,16 @@ Las rutas públicas se gestionan en el middleware de seguridad para una fácil i
 ### Importación de Datos
 
 Se ha implementado un método que permite lanzar una consulta desde una llamada API. Además, al importar datos, se verifica la existencia y la modificación de objetos para evitar duplicaciones y mantener la integridad. No se realiza una importación automática al iniciar la aplicación porque, según lo que entendí en los Requerimientos, se quería solo cuando se llamara al método API concreto.
+He tenido tambien en cuenta los datos duplicados, tanto de Networks como de Countries, para no insertar en BBDD datos duplicados, si llega a cambiar los datos, si se vuelven a importar se modificarían/añadirían de nuevo.
 
 ### IDs Autoincrementales
 
 Se han añadido IDs autoincrementales a las clases internas del objeto `Show` para agilizar la búsqueda en caso de una gran cantidad de datos.
 
-## Ejecución de la Aplicación
-
-1. Descargue el código y ábralo en Visual Studio (Versión utilizada: VS 2022).
-2. Ejecute la aplicación.
 
 ### BBDD SQLite
 
-La base de datos SQLite se crea automáticamente al ejecutar la aplicación.
+La base de datos SQLite se crea automáticamente al ejecutar la aplicación. (No se importan los datos en este momento)
 
 ## Comandos de API
 
@@ -55,6 +61,8 @@ La base de datos SQLite se crea automáticamente al ejecutar la aplicación.
 | Obtener Datos por Consulta         | `https://localhost:44360/api/Shows/GetDataByQuery`               |
 
 ### Encabezados Importantes
+
+Añada estos encabezados en todos los métodos, el APIKey solo es prescindible en el método señalado como "Método público"
 
 - `ApiKey - DevelopKey`
 - `Content-Type - application/json`
