@@ -3,11 +3,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using APICodere.Controllers;
 using APICodere.Mappings;
+using APICodere.Models.Dtos;
 using APICodere.Repository;
 using APICodere.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
@@ -17,7 +19,6 @@ namespace APICodere.Test
     public class ShowsControllerTests
     {
         private ShowsController _showsController;
-        private ShowsRepository _repository;
         private IMapper _mapper;
         private HttpClient _httpClient;
 
@@ -32,9 +33,7 @@ namespace APICodere.Test
             _mapper = new Mapper(mapperConfiguration);
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://api.tvmaze.com");
-            _repository = new ShowsRepository();
-            _repository.Database.EnsureCreated();
-            ShowsService showsService = new ShowsService(_repository, _mapper);
+            ShowsService showsService = new ShowsService(_mapper);
             _showsController = new ShowsController(showsService);
         }
 
@@ -45,7 +44,8 @@ namespace APICodere.Test
             var jsonResult = JsonConvert.SerializeObject(result?.Value);
 
             Console.WriteLine("Result.Value: " + jsonResult);
-            Assert.That(result.Value, Is.Not.Null);
+            var numeroResultados = ((List<ShowDto>)result.Value).Count;
+            Assert.That(numeroResultados, Is.GreaterThan(0));
             Assert.That(result.StatusCode, Is.EqualTo(200));
         }
 
@@ -70,35 +70,39 @@ namespace APICodere.Test
             var jsonResult = JsonConvert.SerializeObject(result?.Value);
 
             Console.WriteLine("Result.Value: " + jsonResult);
-            Assert.That(result.Value, Is.Not.Null);
+            var numeroResultados = ((List<ShowDto>)result.Value).Count;
+            Assert.That(numeroResultados, Is.GreaterThan(0));
             Assert.That(result.StatusCode, Is.EqualTo(200));
         }
 
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    // Este método se ejecutará al finalizar todas las pruebas en la clase
+        [TearDown]
+        public void TearDown()
+        {
+            // Este método se ejecutará al finalizar todas las pruebas en la clase
+            IConfiguration configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+            string connectionString = configuration.GetConnectionString("ShowsDatabase");
+            string directorio = Environment.CurrentDirectory;
+            string nombreArchivo = connectionString;
+            string rutaCompleta = Path.Combine(directorio, nombreArchivo);
+            if (File.Exists(rutaCompleta))
+            {
+                try
+                {
+                    using (var context = new ShowsRepository())
+                    {
+                        context.Database.EnsureDeleted();
+                    }
 
-        //    string directorio = Environment.CurrentDirectory;
-        //    string nombreArchivo = "Tvshows.sqlite";
-        //    string rutaCompleta = Path.Combine(directorio, nombreArchivo);
-
-        //    if (File.Exists(rutaCompleta))
-        //    {
-        //        try
-        //        {
-        //            File.Delete(rutaCompleta);
-        //            Console.WriteLine($"Archivo '{nombreArchivo}' eliminado al finalizar las pruebas.");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine($"Error al eliminar el archivo: {ex.Message}");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"El archivo '{nombreArchivo}' no existe en el directorio '{directorio}'.");
-        //    }
-        //}
+                    Console.WriteLine($"Base de datos '{nombreArchivo}' eliminada al finalizar las pruebas.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al eliminar la base de datos: {ex.Message}");
+                }
+            }
+        }
     }
 }

@@ -15,13 +15,11 @@ namespace APICodere.Services
 {
     public class ShowsService
     {
-        private readonly ShowsRepository _dbContext;
         private readonly HttpClient _httpClient;
         private readonly IMapper _mapper;
 
-        public ShowsService(ShowsRepository dbContext, IMapper mapper)
+        public ShowsService(IMapper mapper)
         {
-            _dbContext = dbContext;
             _mapper = mapper;
             _httpClient = new HttpClient
             {
@@ -30,12 +28,13 @@ namespace APICodere.Services
         }
 
         public async Task<bool> ImportShows(List<ShowDto> showInfoList)
-        {
-            using var transactionNetwork = _dbContext.Database.BeginTransaction();
+        { 
+            using var context= new ShowsRepository();
+            using var transactionNetwork = context.Database.BeginTransaction();
 
             try
             {
-                var showsOnBBDD = _dbContext.Shows.ToDictionary(s => s.Id);
+                var showsOnBBDD = context.Shows.ToDictionary(s => s.Id);
 
                 // Identificar cambios y filtrar los que necesitan ser actualizados o insertados
                 var showsToInsertOrUpdate = showInfoList
@@ -75,11 +74,11 @@ namespace APICodere.Services
                     .ToList();
 
                 // Persiste las countries únicas
-                _dbContext.Countries.AddRange(uniqueCountries.Select(country => _mapper.Map<CountryDto>(country)));
-                _dbContext.SaveChanges();
+                context.Countries.AddRange(uniqueCountries.Select(country => _mapper.Map<CountryDto>(country)));
+                context.SaveChanges();
 
                 // Persiste las redes únicas
-                _dbContext.Networks.AddRange(uniqueNetworks.Select(network =>
+                context.Networks.AddRange(uniqueNetworks.Select(network =>
                 {
                     var networkDto = _mapper.Map<NetworkDto>(network);
                     var matchingCountry = uniqueCountries.FirstOrDefault(c => c.Code == network.Country.Code);
@@ -87,40 +86,40 @@ namespace APICodere.Services
                         networkDto.idCountry = matchingCountry.Id;
                     return networkDto;
                 }));
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
                 // Persiste Schedule, Externals, Image y Link únicos
-                _dbContext.Schedules.AddRange(showsToInsertOrUpdate
+                context.Schedules.AddRange(showsToInsertOrUpdate
                     .Where(show => show.Schedule != null)
                     .Select(show => show.Schedule)
                     .GroupBy(schedule => new { schedule.Time, Days = string.Join(",", schedule.Days) })
                     .Select(group => group.First())
                     .Select(schedule => _mapper.Map<ScheduleDto>(schedule)));
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
-                _dbContext.Externals.AddRange(showsToInsertOrUpdate
+                context.Externals.AddRange(showsToInsertOrUpdate
                     .Where(show => show.Externals != null)
                     .Select(show => show.Externals)
                     .GroupBy(externals => new { externals.Tvrage, externals.Thetvdb, externals.Imdb })
                     .Select(group => group.First())
                     .Select(externals => _mapper.Map<ExternalsDto>(externals)));
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
-                _dbContext.Images.AddRange(showsToInsertOrUpdate
+                context.Images.AddRange(showsToInsertOrUpdate
                     .Where(show => show.Image != null)
                     .Select(show => show.Image)
                     .GroupBy(image => new { image.Medium, image.Original })
                     .Select(group => group.First())
                     .Select(image => _mapper.Map<ImageDto>(image)));
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
-                _dbContext.Links.AddRange(showsToInsertOrUpdate
+                context.Links.AddRange(showsToInsertOrUpdate
                     .Where(show => show.Link != null)
                     .Select(show => show.Link)
                     .GroupBy(link => new { link.SelfHref, link.PreviousepisodeHref })
                     .Select(group => group.First())
                     .Select(link => _mapper.Map<LinkDto>(link)));
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
                 // Persiste cada Show
                 foreach (var show in showsToInsertOrUpdate)
@@ -134,7 +133,7 @@ namespace APICodere.Services
 
                     if (show.Schedule != null)
                     {
-                        var matchingSchedule = _dbContext.Schedules
+                        var matchingSchedule = context.Schedules
                             .AsEnumerable()
                             .FirstOrDefault(s => s.Time == show.Schedule.Time &&
                                                   s.Days.SequenceEqual(show.Schedule.Days));
@@ -146,7 +145,7 @@ namespace APICodere.Services
 
                     if (show.Externals != null)
                     {
-                        var matchingExternals = _dbContext.Externals
+                        var matchingExternals = context.Externals
                             .FirstOrDefault(e =>
                                 e.Tvrage == show.Externals.Tvrage && e.Thetvdb == show.Externals.Thetvdb &&
                                 e.Imdb == show.Externals.Imdb);
@@ -156,7 +155,7 @@ namespace APICodere.Services
 
                     if (show.Image != null)
                     {
-                        var matchingImage = _dbContext.Images
+                        var matchingImage = context.Images
                             .FirstOrDefault(i => i.Medium == show.Image.Medium && i.Original == show.Image.Original);
                         if (matchingImage != null)
                             show.idImage = matchingImage.Id;
@@ -164,21 +163,22 @@ namespace APICodere.Services
 
                     if (show.Link != null)
                     {
-                        var matchingLink = _dbContext.Links
+                        var matchingLink = context.Links
                             .FirstOrDefault(l =>
                                 l.SelfHref == show.Link.SelfHref && l.PreviousepisodeHref == show.Link.PreviousepisodeHref);
                         if (matchingLink != null)
                             show.idLink = matchingLink.Id;
                     }
                     show.Network = null;
-                    _dbContext.Shows.AddRange(show);
+                    context.Shows.AddRange(show);
                 }
 
                 // Guardar cambios una vez fuera del bucle
-                _dbContext.SaveChanges();
+                context.SaveChanges();
 
                 // Confirma la transacción
                 transactionNetwork.Commit();
+                context.Dispose();
                 return true;
             }
             catch (Exception ex)
@@ -186,6 +186,7 @@ namespace APICodere.Services
                 // Algo salió mal, realiza un rollback
                 Console.WriteLine($"Error: {ex.Message}");
                 transactionNetwork.Rollback();
+                context.Dispose();
                 return false;
             }
         }
@@ -227,7 +228,9 @@ namespace APICodere.Services
 
         public async Task<List<ShowDto>> GetAllData()
         {
-            var allData = await _dbContext.Shows
+            using var context = new ShowsRepository();
+
+            var allData = await context.Shows
                 .Include(show => show.Network)
                     .ThenInclude(network => network.Country)
                 .Include(show => show.Schedule)
@@ -235,24 +238,31 @@ namespace APICodere.Services
                 .Include(show => show.Image)
                 .Include(show => show.Link)
                 .ToListAsync();
+            context.Dispose();
 
             return allData.Select(_mapper.Map<ShowDto>).ToList();
         }
 
         public IActionResult GetDataByQuery(string sqlQuery)
         {
+            using var context = new ShowsRepository();
+
             try
             {
-                if (_dbContext.Shows.Count() == 0)
+                if (context.Shows.Count() == 0)
                 {
                     return new BadRequestObjectResult(new { error = "La base de datos no tiene Datos, por favor, ejecute antes el metodo de importación: ShowsMainInformationAndImport" });
                 }
                 // Ejecutar la consulta en la base de datos
-                var result = _dbContext.Shows.FromSqlRaw(sqlQuery).ToList();
+                var result = context.Shows.FromSqlRaw(sqlQuery).ToList();
+                context.Dispose();
+
                 return new OkObjectResult(result.Select(_mapper.Map<ShowDto>).ToList());
             }
             catch (Exception ex)
             {
+                context.Dispose();
+
                 return new BadRequestObjectResult(new { error = $"Error ejecutando Query: {ex.Message}" });
             }
         }

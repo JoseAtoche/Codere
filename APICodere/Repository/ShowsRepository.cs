@@ -7,7 +7,7 @@ namespace APICodere.Repository
 {
     public class ShowsRepository : DbContext
     {
-        string dbName = "Tvshows.sqlite";
+        string dbName;
         public DbSet<ShowDto> Shows { get; set; }
         public DbSet<NetworkDto> Networks { get; set; }
         public DbSet<CountryDto> Countries { get; set; }
@@ -16,11 +16,15 @@ namespace APICodere.Repository
         public DbSet<ImageDto> Images { get; set; }
         public DbSet<LinkDto> Links { get; set; }
 
-        public ShowsRepository(DbContextOptions<ShowsRepository> options) : base(options)
-        {
-        }
         public ShowsRepository() 
         {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+            dbName = configuration.GetConnectionString("ShowsDatabase");
+            Database.EnsureCreated();
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -66,22 +70,8 @@ namespace APICodere.Repository
             optionsBuilder.UseSqlite(connectionString)
                 .EnableSensitiveDataLogging()
                 .LogTo(Console.WriteLine, LogLevel.Information);
-            ApplyMigrations();
-
         }
-        private void ApplyMigrations()
-        {
-            try
-            {
-                // Obtén el migrator y aplica las migraciones
-                var migrator = Database.GetService<IMigrator>();
-                migrator.Migrate();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al aplicar migraciones: " + ex.Message);
-            }
-        }
+       
 
         public void AddShowInfos(List<ShowDto> showInfoList)
         {
