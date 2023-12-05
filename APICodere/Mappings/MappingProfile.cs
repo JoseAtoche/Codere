@@ -23,7 +23,7 @@ namespace APICodere.Mappings
                         .ForMember(dest => dest.OfficialSite, opt => opt.MapFrom(src => src.OfficialSite ?? string.Empty))
                         .ForMember(dest => dest.Externals, opt => opt.MapFrom(src => src.Externals))
                         .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image))
-                        .ForMember(dest => dest.Link, opt => opt.MapFrom(src => src.Link));
+                        .ForMember(dest => dest.Link, opt => opt.MapFrom(src => src._links));
 
             CreateMap<Show.Scheduleclass, ScheduleDto>();
             CreateMap<Show.Countryclass, CountryDto>();

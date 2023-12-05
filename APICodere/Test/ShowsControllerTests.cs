@@ -92,8 +92,6 @@ namespace APICodere.Test
         public void TearDown()
         {
             // Este método se ejecutará al finalizar todas las pruebas en la clase
-
-
             string nombreArchivo = configuration.GetConnectionString("ShowsDatabase");
             string directorio = Environment.CurrentDirectory;
             string rutaCompleta = Path.Combine(directorio, nombreArchivo);

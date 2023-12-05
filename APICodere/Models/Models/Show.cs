@@ -29,7 +29,7 @@ namespace APICodere.Models.Models
         public Imageclass Image { get; set; }
         public string Summary { get; set; }
         public int Updated { get; set; }
-        public Linkclass Link { get; set; }
+        public Linkclass _links { get; set; }
 
         public DateTime? EndedDate
         {

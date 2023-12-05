@@ -10,6 +10,7 @@ using APICodere.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace APICodere.Services
 {
@@ -83,7 +84,7 @@ namespace APICodere.Services
                     .ToList();
 
                 // Persiste las countries únicas que no estén en BBDD aún
-                PersistOrUpdateEntities(uniqueCountries, context.Countries, country => new { country.Name, country.Code, country.Timezone }, context);
+                PersistOrUpdateEntities(uniqueCountries, context.Countries, context, country => new { country.Name, country.Code, country.Timezone });
 
                 // Persiste las redes únicas
                 context.Networks.AddRange(uniqueNetworks.Select(network =>
@@ -96,19 +97,10 @@ namespace APICodere.Services
                 }));
                 context.SaveChanges();
 
-                // Persiste Schedule, Externals, Image y Link únicos
-                PersistOrUpdateEntities(showsToInsertOrUpdate.Select(show => show.Schedule), context.Schedules, schedule => new { schedule.Time, Days = string.Join(",", schedule.Days) }, context);
-                PersistOrUpdateEntities(showsToInsertOrUpdate.Select(show => show.Externals), context.Externals, externals => new { externals.Tvrage, externals.Thetvdb, externals.Imdb }, context);
-                PersistOrUpdateEntities(showsToInsertOrUpdate.Select(show => show.Image), context.Images, image => new { image.Medium, image.Original }, context);
-                PersistOrUpdateEntities(showsToInsertOrUpdate.Select(show => show.Link), context.Links, link => new { link.SelfHref, link.PreviousepisodeHref }, context);
-
 
                 // Persiste cada Show
                 var networkIds = uniqueNetworks.ToDictionary(network => network.Id);
-                var scheduleIds = context.Schedules.ToDictionary(schedule => new { schedule.Time, Days = string.Join(",", schedule.Days) }, schedule => schedule.Id);
-                var externalsIds = context.Externals.ToDictionary(externals => new { externals.Tvrage, externals.Thetvdb, externals.Imdb }, externals => externals.Id);
-                var imagesIds = context.Images.ToDictionary(image => new { image.Medium, image.Original }, image => image.Id);
-                var linksIds = context.Links.ToDictionary(link => new { link.SelfHref, link.PreviousepisodeHref }, link => link.Id);
+               
 
                 foreach (var show in showsToInsertOrUpdate)
                 {
@@ -117,24 +109,24 @@ namespace APICodere.Services
                         show.idNetwork = networkId.Id;
                     }
 
-                    if (show.Schedule != null && scheduleIds.TryGetValue(new { show.Schedule.Time, Days = string.Join(",", show.Schedule.Days) }, out var scheduleId))
+                    if (show.Schedule != null)
                     {
-                        show.IdSchedule = scheduleId;
+                        PersistAndAssignId<ScheduleDto>(show.Schedule, context.Schedules, dto => show.IdSchedule = dto.Id, context);
                     }
 
-                    if (show.Externals != null && externalsIds.TryGetValue(new { show.Externals.Tvrage, show.Externals.Thetvdb, show.Externals.Imdb }, out var externalsId))
+                    if (show.Externals != null)
                     {
-                        show.idExternals = externalsId;
+                        PersistAndAssignId<ExternalsDto>(show.Externals, context.Externals, dto => show.idExternals = dto.Id, context);
                     }
 
-                    if (show.Image != null && imagesIds.TryGetValue(new { show.Image.Medium, show.Image.Original }, out var imageId))
+                    if (show.Image != null)
                     {
-                        show.idImage = imageId;
+                        PersistAndAssignId<ImageDto>(show.Image, context.Images, dto => show.idImage = dto.Id, context);
                     }
 
-                    if (show.Link != null && linksIds.TryGetValue(new { show.Link.SelfHref, show.Link.PreviousepisodeHref }, out var linkId))
+                    if (show.Link != null)
                     {
-                        show.idLink = linkId;
+                        PersistAndAssignId<LinkDto>(show.Link, context.Links, dto => show.idLink = dto.Id, context);
                     }
 
                     show.Network = null;
@@ -244,29 +236,49 @@ namespace APICodere.Services
                     .Include(show => show.Link);
 
         }
-        private void PersistOrUpdateEntities<T>(IEnumerable<T> entities, DbSet<T> dbSet, Func<T, object> keySelector, ShowsRepository context) where T : class
+        private void PersistOrUpdateEntities<T>(IEnumerable<T> entities, DbSet<T> dbSet, ShowsRepository context, Func<T, object> keySelector = null) where T : class
         {
-            var uniqueEntities = entities.Where(entity => entity != null)
-                .GroupBy(keySelector)
-                .Select(group => group.First())
-                .ToList();
-
-            var existingEntities = dbSet
-                .ToDictionary(keySelector, entity => entity);
-
-            foreach (var uniqueEntity in uniqueEntities)
+            if (keySelector == null)
             {
-                if (existingEntities.TryGetValue(keySelector(uniqueEntity), out var existingEntity))
+                // Si no se proporciona keySelector, simplemente agregamos todas las entidades sin filtrar duplicados
+                dbSet.AddRange(entities);
+            }
+            else
+            {
+                var uniqueEntities = entities
+                    .Where(entity => entity != null)
+                    .GroupBy(keySelector)
+                    .Select(group => group.First())
+                    .ToList();
+
+                var existingEntities = dbSet
+                    .ToDictionary(keySelector, entity => entity);
+
+                foreach (var uniqueEntity in uniqueEntities)
                 {
-                    _mapper.Map(uniqueEntity, existingEntity);
-                }
-                else
-                {
-                    dbSet.Add(_mapper.Map<T>(uniqueEntity));
+                    var keyValue = keySelector(uniqueEntity);
+
+                    if (existingEntities.TryGetValue(keyValue, out var existingEntity))
+                    {
+                        _mapper.Map(uniqueEntity, existingEntity);
+                    }
+                    else
+                    {
+                        dbSet.Add(_mapper.Map<T>(uniqueEntity));
+                    }
                 }
             }
 
             context.SaveChanges();
+        }
+
+
+        private void PersistAndAssignId<TDto>(object sourceEntity, DbSet<TDto> dbSet, Action<TDto> assignIdAction, ShowsRepository context) where TDto : class
+        {
+            var dto = _mapper.Map<TDto>(sourceEntity);
+            dbSet.Add(dto);
+            context.SaveChanges();
+            assignIdAction(dto);
         }
     }
 }
