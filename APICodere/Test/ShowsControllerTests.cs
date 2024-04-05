@@ -1,17 +1,14 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using APICodere.Controllers;
-using APICodere.Mappings;
-using APICodere.Models.Dtos;
-using APICodere.Repository;
-using APICodere.Services;
+﻿using Utils;
 using AutoMapper;
+using Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Models.ShowModels.Repository;
+using Models.Enumerados;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using Repository;
+using Services;
 
 namespace APICodere.Test
 {
@@ -42,7 +39,7 @@ namespace APICodere.Test
             _httpClient.BaseAddress = new Uri(ApiURI);
             ShowsService showsService = new ShowsService(_mapper);
             _showsController = new ShowsController(showsService);
-            
+
         }
 
         [Test]
@@ -92,24 +89,27 @@ namespace APICodere.Test
         public void TearDown()
         {
             // Este método se ejecutará al finalizar todas las pruebas en la clase
-            string nombreArchivo = configuration.GetConnectionString("ShowsDatabase");
-            string directorio = Environment.CurrentDirectory;
-            string rutaCompleta = Path.Combine(directorio, nombreArchivo);
+            if (configuration.GetConnectionString("ConnectOption") == Enumerados.SQLConexion.SQLLite.ToString()) {
 
-            if (File.Exists(rutaCompleta))
-            {
-                try
+                string nombreArchivo = configuration.GetConnectionString("ShowsDatabase");
+                string directorio = Environment.CurrentDirectory;
+                string rutaCompleta = Path.Combine(directorio, nombreArchivo);
+
+                if (File.Exists(rutaCompleta))
                 {
-                    using (var context = new ShowsRepository())
+                    try
                     {
-                        context.Database.EnsureDeleted();
-                    }
+                        using (var context = new ShowsRepository())
+                        {
+                            context.Database.EnsureDeleted();
+                        }
 
-                    Console.WriteLine($"Base de datos '{nombreArchivo}' eliminada al finalizar las pruebas.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al eliminar la base de datos: {ex.Message}");
+                        Console.WriteLine($"Base de datos '{nombreArchivo}' eliminada al finalizar las pruebas.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al eliminar la base de datos: {ex.Message}");
+                    }
                 }
             }
         }

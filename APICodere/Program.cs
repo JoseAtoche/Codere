@@ -1,10 +1,14 @@
-using APICodere.Repository;
-using APICodere.Services;  // Importa la capa de servicio
+using Repository;
+using Services;
+using System.Globalization;
+using Utils;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuración de AutoMapper
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<ShowsRepository>(ServiceLifetime.Scoped);
 
 // Agregar el servicio de la capa de servicio
@@ -15,6 +19,8 @@ builder.Services.AddControllers();
 // Aprender más sobre la configuración de Swagger/OpenAPI en https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 

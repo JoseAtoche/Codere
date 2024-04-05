@@ -1,0 +1,405 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Documentos\\GitHub\\Codere\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|f:\\documentos\\github\\codere\\models\\showmodels\\repository\\showdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|solutionrelative:models\\showmodels\\repository\\showdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F296739-6216-4A7E-98CF-929A068B7BC0}|Services\\Services.csproj|f:\\documentos\\github\\codere\\services\\showsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F296739-6216-4A7E-98CF-929A068B7BC0}|Services\\Services.csproj|solutionrelative:services\\showsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC7D79A1-C6D8-4288-AECC-6E903F2DA35C}|Controller\\Controllers.csproj|f:\\documentos\\github\\codere\\controller\\showscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC7D79A1-C6D8-4288-AECC-6E903F2DA35C}|Controller\\Controllers.csproj|solutionrelative:controller\\showscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|f:\\documentos\\github\\codere\\models\\showmodels\\service\\serviceshowmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|solutionrelative:models\\showmodels\\service\\serviceshowmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EC1D76C-0B1E-4695-9CB4-49097F4AF8CD}|Repositories\\Repositories.csproj|f:\\documentos\\github\\codere\\repositories\\showsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EC1D76C-0B1E-4695-9CB4-49097F4AF8CD}|Repositories\\Repositories.csproj|solutionrelative:repositories\\showsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\test\\showscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\test\\showscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34EEF2B1-406F-4BDF-B0BC-39270773CD4C}|Utils\\Utils.csproj|f:\\documentos\\github\\codere\\utils\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34EEF2B1-406F-4BDF-B0BC-39270773CD4C}|Utils\\Utils.csproj|solutionrelative:utils\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|f:\\documentos\\github\\codere\\models\\showmodels\\externalapi\\externalapishowmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|solutionrelative:models\\showmodels\\externalapi\\externalapishowmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|f:\\documentos\\github\\codere\\models\\enumerados\\enumerados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|solutionrelative:models\\enumerados\\enumerados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EC1D76C-0B1E-4695-9CB4-49097F4AF8CD}|Repositories\\Repositories.csproj|f:\\documentos\\github\\codere\\repositories\\repositories.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4EC1D76C-0B1E-4695-9CB4-49097F4AF8CD}|Repositories\\Repositories.csproj|solutionrelative:repositories\\repositories.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\apicodere.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\apicodere.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F296739-6216-4A7E-98CF-929A068B7BC0}|Services\\Services.csproj|f:\\documentos\\github\\codere\\services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3F296739-6216-4A7E-98CF-929A068B7BC0}|Services\\Services.csproj|solutionrelative:services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|f:\\documentos\\github\\codere\\models\\models.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E6A85A71-EDDB-4C88-9199-648606B2134A}|Models\\Models.csproj|solutionrelative:models\\models.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Service\\ShowsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Service\\ShowsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\apicodere.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\apicodere.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|f:\\documentos\\github\\codere\\apicodere\\apicodere.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{71F8B1C7-023D-46AD-84D1-C5F8FC763365}|APICodere\\APICodere.csproj|solutionrelative:apicodere\\apicodere.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Repository\\Models\\ShowDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Repository\\Models\\ShowDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Repository\\Repository.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Repository\\Repository.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Service\\Models\\Show.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Service\\Models\\Show.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Controllers\\ShowsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ShowsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Documentos\\GitHub\\Codere\\Repository\\ShowsRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Repository\\ShowsRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ServiceShowModel.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\Service\\ServiceShowModel.cs",
+              "RelativeDocumentMoniker": "Models\\ShowModels\\Service\\ServiceShowModel.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\Service\\ServiceShowModel.cs",
+              "RelativeToolTip": "Models\\ShowModels\\Service\\ServiceShowModel.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAIwA0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:42:01.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ShowsControllerTests.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Test\\ShowsControllerTests.cs",
+              "RelativeDocumentMoniker": "APICodere\\Test\\ShowsControllerTests.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Test\\ShowsControllerTests.cs",
+              "RelativeToolTip": "APICodere\\Test\\ShowsControllerTests.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAlwFcAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:37:42.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Program.cs",
+              "RelativeDocumentMoniker": "APICodere\\Program.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Program.cs",
+              "RelativeToolTip": "APICodere\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:37:42.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShowsRepository.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Repositories\\ShowsRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ShowsRepository.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Repositories\\ShowsRepository.cs",
+              "RelativeToolTip": "Repositories\\ShowsRepository.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAIwBwAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T14:14:52.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ShowsController.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Controller\\ShowsController.cs",
+              "RelativeDocumentMoniker": "Controller\\ShowsController.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Controller\\ShowsController.cs",
+              "RelativeToolTip": "Controller\\ShowsController.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAWwBwAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T14:08:40.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShowsService.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Services\\ShowsService.cs",
+              "RelativeDocumentMoniker": "Services\\ShowsService.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Services\\ShowsService.cs",
+              "RelativeToolTip": "Services\\ShowsService.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAqwHEAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T14:10:22.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShowDto.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\Repository\\ShowDto.cs",
+              "RelativeDocumentMoniker": "Models\\ShowModels\\Repository\\ShowDto.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\Repository\\ShowDto.cs",
+              "RelativeToolTip": "Models\\ShowModels\\Repository\\ShowDto.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAUwFQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:41:31.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\appsettings.json",
+              "RelativeDocumentMoniker": "APICodere\\appsettings.json",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\appsettings.json",
+              "RelativeToolTip": "APICodere\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-04T13:37:42.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Utils\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Utils\\Mappings\\MappingProfile.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Utils\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "Utils\\Mappings\\MappingProfile.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAgwA8AAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:39:11.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ExternalAPIShowModel.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\ExternalAPI\\ExternalAPIShowModel.cs",
+              "RelativeDocumentMoniker": "Models\\ShowModels\\ExternalAPI\\ExternalAPIShowModel.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Models\\ShowModels\\ExternalAPI\\ExternalAPIShowModel.cs",
+              "RelativeToolTip": "Models\\ShowModels\\ExternalAPI\\ExternalAPIShowModel.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAmwA0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:57:33.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Enumerados.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Models\\Enumerados\\Enumerados.cs",
+              "RelativeDocumentMoniker": "Models\\Enumerados\\Enumerados.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Models\\Enumerados\\Enumerados.cs",
+              "RelativeToolTip": "Models\\Enumerados\\Enumerados.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T17:12:28.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Repositories.csproj",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Repositories\\Repositories.csproj",
+              "RelativeDocumentMoniker": "Repositories\\Repositories.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Repositories\\Repositories.csproj",
+              "RelativeToolTip": "Repositories\\Repositories.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T16:59:58.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "APICodere.csproj",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.csproj",
+              "RelativeDocumentMoniker": "APICodere\\APICodere.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.csproj",
+              "RelativeToolTip": "APICodere\\APICodere.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T16:50:02.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Services.csproj",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Services\\Services.csproj",
+              "RelativeDocumentMoniker": "Services\\Services.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Services\\Services.csproj",
+              "RelativeToolTip": "Services\\Services.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T16:20:50.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "APICodere\\Properties\\launchSettings.json",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\Properties\\launchSettings.json",
+              "RelativeToolTip": "APICodere\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-04T16:46:44.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Models.csproj",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Models\\Models.csproj",
+              "RelativeDocumentMoniker": "Models\\Models.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Models\\Models.csproj",
+              "RelativeToolTip": "Models\\Models.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T16:41:28.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Repository.csproj",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Repository\\Repository.csproj",
+              "RelativeDocumentMoniker": "Repository\\Repository.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Repository\\Repository.csproj",
+              "RelativeToolTip": "Repository\\Repository.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T13:47:50.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Show.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Service\\Models\\Show.cs",
+              "RelativeDocumentMoniker": "Service\\Models\\Show.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Service\\Models\\Show.cs",
+              "RelativeToolTip": "Service\\Models\\Show.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:45:59.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ShowsController.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Controllers\\ShowsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ShowsController.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Controllers\\ShowsController.cs",
+              "RelativeToolTip": "Controllers\\ShowsController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:38:00.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ShowsRepository.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Repository\\ShowsRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ShowsRepository.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Repository\\ShowsRepository.cs",
+              "RelativeToolTip": "Repository\\ShowsRepository.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:37:57.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ShowDto.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Repository\\Models\\ShowDto.cs",
+              "RelativeDocumentMoniker": "Repository\\Models\\ShowDto.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Repository\\Models\\ShowDto.cs",
+              "RelativeToolTip": "Repository\\Models\\ShowDto.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:58:15.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ShowsService.cs",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\Service\\ShowsService.cs",
+              "RelativeDocumentMoniker": "Service\\ShowsService.cs",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\Service\\ShowsService.cs",
+              "RelativeToolTip": "Service\\ShowsService.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T13:37:52.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "APICodere.http",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.http",
+              "RelativeDocumentMoniker": "APICodere\\APICodere.http",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.http",
+              "RelativeToolTip": "APICodere\\APICodere.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-04-04T13:37:42.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "APICodere",
+              "DocumentMoniker": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.csproj",
+              "RelativeDocumentMoniker": "APICodere\\APICodere.csproj",
+              "ToolTip": "F:\\Documentos\\GitHub\\Codere\\APICodere\\APICodere.csproj",
+              "RelativeToolTip": "APICodere\\APICodere.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-04T13:37:42.859Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
